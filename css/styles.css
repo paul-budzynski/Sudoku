@@ -1,0 +1,177 @@
+body {
+	background-color:#E1E1E1;
+	font-family: ubuntu, arial;
+	margin:0px;
+}
+
+#plateau {
+	/*margin-top:30px;*/
+	/*margin-left: 20px;*/
+	margin: 80px auto;
+	padding:20px;
+	border:solid 1px grey;
+	border-radius: 8px;
+	box-shadow: 8px 8px 8px grey;
+	background-color: lightyellow;
+}
+
+input, select {
+	font-size: 18px;
+}
+
+input, select {
+	min-height:40px;
+}
+
+#jeu {
+	display:flex;
+	flex-direction: column;
+	border:solid 1px lightgrey;
+	height:403px;
+	width:403px;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+p {
+	font-size: small;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+input {
+	max-width: 90%;
+	text-align: center;
+}
+
+.ligne {
+	display:flex;
+	height: 11%;
+	width: 100%;
+}
+
+.case {
+	margin: 0;
+	flex: 1 1 auto;
+	width: 10%;
+	text-align: center;
+	border:solid 1px rgb(0, 0, 0);
+
+}
+
+#photo16 {
+	margin:0px 1px 1px 0px;
+	min-height: 100px;
+}
+
+#boutons {
+	display:flex;
+	justify-content: space-around;
+	align-items: stretch;
+	margin-bottom:10px;
+	height:3em;
+}
+
+#plateau {
+	display: flex;
+	flex-direction: column;
+	width:405px;
+}
+
+#themes, #melanger {
+	flex-grow: 1;
+}
+
+#solution {
+	width:30%;
+}
+
+#message {
+	background-color:#F4F4F3;
+	padding: 0px 10px;
+	margin-top: 10px;
+	border: solid 1px darkgray;
+	border-radius: 6px;
+	color:darkslategray;
+	height:3em;
+	text-align: center;
+}
+#message>p {
+	margin: 10px 3px;
+}
+
+#titre>p, #footer>p {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+#titre>p {
+	margin: 10px 3px 20px 3px;
+}
+
+#footer>p {
+	margin: 10px 3px 0px 3px;
+}
+
+/* huawei mate 20 */
+
+@media(max-width: 1080px) {
+	#plateau {
+		width:75%;
+	}
+	.ligne>img {
+		min-width:24.8%;
+	}
+	#photo16 {
+		min-width: 99.8%;
+	}
+	#boutons, #message {
+		height:5em;
+	}
+	input, select, p {
+		font-size: 30px;
+	}
+	#message>p {
+		margin:0.6em 5px;
+	}
+	#titre>p, #footer>p {
+		font-size: 2.5em;
+		margin:30px 0px;
+	}
+
+}
+
+@media(max-width: 750px) {
+	#plateau {
+		width:75%;
+	}
+	.ligne>img {
+		min-width:24.8%;
+	}
+	#photo16 {
+		min-width: 99.8%;
+	}
+	#boutons, #message {
+		height:5em;
+	}
+	input, select {
+		font-size: 20px;
+	}
+	#message>p {
+		margin:0.6em 5px;
+	}
+	input, select {
+		max-height:25px;
+	}
+	#titre>p, #footer>p {
+		font-size: 1.8em;
+		margin:5px 0px;
+	}
+	#boutons {
+		margin:10px 0px -10px 0px;
+	}
+
+}

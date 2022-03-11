@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Sudoku JavaScript</title>
+    <link href="logo.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script defer type="text/javascript" src="js/jeu.js"></script>
+    <script defer type="text/javascript" src="js/senario.js"></script>
+    <script defer type="text/javascript" src="js/case.js"></script>
+    <script defer type="text/javascript" src="js/utils.js"></script>
+</head>
+<body>
+    <div id="plateau">
+        <div id="titre"><p>Sudoku JavaScript</p></div>
+        <div id="boutons">
+            <input type="button" id="restart" value="Restart" onclick="nouvellePartie();">
+            <input type="button" id="choisir" value="Choisir grille" onclick="choisir();">
+            <input type="button" id="start" value="Start" onclick="start();">
+            <input type="button" id="verification" value="Verifier" onclick="verifier();">
+            <input type="button" id="resolve" value="Aide" onclick="aides();">
+            <input type="button" id="possible" value="Possible" onclick="possible();">
+        </div>
+        <div id="boutons">
+            <h2>Difficulté : </h2>
+            <select id="difficulty" onclick="difficulty();" onkeypress="difficulty();">
+                <option value="0.4">Très facile</option>
+                <option value="0.5">Facile</option>
+                <option value="0.5">Assez Facile</option>
+                <option selected value="0.6">Normal</option>
+                <option value="0.7">Assez difficile</option>
+                <option value="0.8">Difficile</option>
+                <option value="0.9">Très difficile</option>
+            </select>
+        </div>
+        <div id="jeu">
+            <div id="ligne0" class="ligne">
+                <div id="case0" class="case carer1">
+                    <h1>C</h1>
+                </div>
+                <div id="case1" class="case carer1">
+                    <h1>H</h1>
+                </div>
+                <div id="case2" class="case carer1">
+                    <h1>A</h1>
+                </div>
+                <div id="case3" class="case carer2">
+                    <h1>R</h1>
+                </div>
+                <div id="case4" class="case carer2">
+                    <h1>G</h1>
+                </div>
+                <div id="case5" class="case carer2">
+                    <h1>E</h1>
+                </div>
+                <div id="case6" class="case carer3">
+                    <h1>M</h1>
+                </div>
+                <div id="case7" class="case carer3">
+                    <h1>E</h1>
+                </div>
+                <div id="case8" class="case carer3">
+                    <h1>N</h1>
+                </div>
+            </div>
+            <div id="ligne1" class="ligne">
+                <div id="case9" class="case carer1">
+                    <h1>H</h1>
+                </div>
+                <div id="case10" class="case carer1">
+                    <h1>A</h1>
+                </div>
+                <div id="case11" class="case carer1">
+                    <h1>R</h1>
+                </div>
+                <div id="case12" class="case carer2">
+                    <h1>G</h1>
+                </div>
+                <div id="case13" class="case carer2">
+                    <h1>E</h1>
+                </div>
+                <div id="case14" class="case carer2">
+                    <h1>M</h1>
+                </div>
+                <div id="case15" class="case carer3">
+                    <h1>E</h1>
+                </div>
+                <div id="case16" class="case carer3">
+                    <h1>N</h1>
+                </div>
+                <div id="case17" class="case carer3">
+                    <h1>T</h1>
+                </div>
+            </div>
+            <div id="ligne2" class="ligne">
+                <div id="case18" class="case carer1">
+                    <h1>A</h1>
+                </div>
+                <div id="case19" class="case carer1">
+                    <h1>R</h1>
+                </div>
+                <div id="case20" class="case carer1">
+                    <h1>G</h1>
+                </div>
+                <div id="case21" class="case carer2">
+                    <h1>E</h1>
+                </div>
+                <div id="case22" class="case carer2">
+                    <h1>M</h1>
+                </div>
+                <div id="case23" class="case carer2">
+                    <h1>E</h1>
+                </div>
+                <div id="case24" class="case carer3">
+                    <h1>N</h1>
+                </div>
+                <div id="case25" class="case carer3">
+                    <h1>T</h1>
+                </div>
+                <div id="case26" class="case carer3">
+                    <h1>C</h1>
+                </div>
+            </div>
+            <div id="ligne3" class="ligne">
+                <div id="case27" class="case carer4">
+                    <h1>R</h1>
+                </div>
+                <div id="case28" class="case carer4">
+                    <h1>G</h1>
+                </div>
+                <div id="case29" class="case carer4">
+                    <h1>E</h1>
+                </div>
+                <div id="case30" class="case carer5">
+                    <h1>M</h1>
+                </div>
+                <div id="case31" class="case carer5">
+                    <h1>E</h1>
+                </div>
+                <div id="case32" class="case carer5">
+                    <h1>N</h1>
+                </div>
+                <div id="case33" class="case carer6">
+                    <h1>T</h1>
+                </div>
+                <div id="case34" class="case carer6">
+                    <h1>C</h1>
+                </div>
+                <div id="case35" class="case carer6">
+                    <h1>H</h1>
+                </div>
+            </div>
+            <div id="ligne4" class="ligne">
+                <div id="case36" class="case carer4">
+                    <h1>G</h1>
+                </div>
+                <div id="case37" class="case carer4">
+                    <h1>E</h1>
+                </div>
+                <div id="case38" class="case carer4">
+                    <h1>M</h1>
+                </div>
+                <div id="case39" class="case carer5">
+                    <h1>E</h1>
+                </div>
+                <div id="case40" class="case carer5">
+                    <h1>N</h1>
+                </div>
+                <div id="case41" class="case carer5">
+                    <h1>T</h1>
+                </div>
+                <div id="case42" class="case carer6">
+                    <h1>C</h1>
+                </div>
+                <div id="case43" class="case carer6">
+                    <h1>H</h1>
+                </div>
+                <div id="case44" class="case carer6">
+                    <h1>A</h1>
+                </div>
+            </div>
+            <div id="ligne5" class="ligne">
+                <div id="case45" class="case carer4">
+                    <h1>E</h1>
+                </div>
+                <div id="case46" class="case carer4">
+                    <h1>M</h1>
+                </div>
+                <div id="case47" class="case carer4">
+                    <h1>E</h1>
+                </div>
+                <div id="case48" class="case carer5">
+                    <h1>N</h1>
+                </div>
+                <div id="case49" class="case carer5">
+                    <h1>T</h1>
+                </div>
+                <div id="case50" class="case carer5">
+                    <h1>C</h1>
+                </div>
+                <div id="case51" class="case carer6">
+                    <h1>H</h1>
+                </div>
+                <div id="case52" class="case carer6">
+                    <h1>A</h1>
+                </div>
+                <div id="case53" class="case carer6">
+                    <h1>R</h1>
+                </div>
+            </div>
+            <div id="ligne6" class="ligne">
+                <div id="case54" class="case carer7">
+                    <h1>M</h1>
+                </div>
+                <div id="case55" class="case carer7">
+                    <h1>E</h1>
+                </div>
+                <div id="case56" class="case carer7">
+                    <h1>N</h1>
+                </div>
+                <div id="case57" class="case carer8">
+                    <h1>T</h1>
+                </div>
+                <div id="case58" class="case carer8">
+                    <h1>C</h1>
+                </div>
+                <div id="case59" class="case carer8">
+                    <h1>H</h1>
+                </div>
+                <div id="case60" class="case carer9">
+                    <h1>A</h1>
+                </div>
+                <div id="case61" class="case carer9">
+                    <h1>R</h1>
+                </div>
+                <div id="case62" class="case carer9">
+                    <h1>G</h1>
+                </div>
+            </div>
+            <div id="ligne7" class="ligne">
+                <div id="case63" class="case carer7">
+                    <h1>E</h1>
+                </div>
+                <div id="case64" class="case carer7">
+                    <h1>N</h1>
+                </div>
+                <div id="case65" class="case carer7">
+                    <h1>T</h1>
+                </div>
+                <div id="case66" class="case carer8">
+                    <h1>C</h1>
+                </div>
+                <div id="case67" class="case carer8">
+                    <h1>H</h1>
+                </div>
+                <div id="case68" class="case carer8">
+                    <h1>A</h1>
+                </div>
+                <div id="case69" class="case carer9">
+                    <h1>R</h1>
+                </div>
+                <div id="case70" class="case carer9">
+                    <h1>G</h1>
+                </div>
+                <div id="case71" class="case carer9">
+                    <h1>E</h1>
+                </div>
+            </div>
+            <div id="ligne8" class="ligne">
+                <div id="case72" class="case carer7">
+                    <h1>N</h1>
+                </div>
+                <div id="case73" class="case carer7">
+                    <h1>T</h1>
+                </div>
+                <div id="case74" class="case carer7">
+                    <h1>C</h1>
+                </div>
+                <div id="case75" class="case carer8">
+                    <h1>H</h1>
+                </div>
+                <div id="case76" class="case carer8">
+                    <h1>A</h1>
+                </div>
+                <div id="case77" class="case carer8">
+                    <h1>R</h1>
+                </div>
+                <div id="case78" class="case carer9">
+                    <h1>G</h1>
+                </div>
+                <div id="case79" class="case carer9">
+                    <h1>E</h1>
+                </div>
+                <div id="case80" class="case carer9">
+                    <h1>M</h1>
+                </div>
+            </div>
+        </div> 
+        <div id="message"></div>
+        <div id="footer"><p>JavaScript 2022</p></div>
+    </div>
+</body>
+</html>
